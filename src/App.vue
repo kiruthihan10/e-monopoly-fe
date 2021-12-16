@@ -1,19 +1,22 @@
 <template>
   <welcome v-if="page_id == 0" @move_login='page_id=2' @move_signup='page_id=1'></welcome>
+  <Sign_up v-if="page_id == 1 | page_id == 2" :page_id="page_id" @move_menu='page_id=0'></Sign_up>
 </template>
 
 <script>
   import Welcome from './components/Welcome.vue'
+  import Sign_up from './components/Sign_up.vue'
 
   // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
   // import Vue from 'vue'
   // Vue.use(BootstrapVue)
   // Vue.use(IconsPlugin)
-  
+  // Page_id: 0: Welcome, 1: Sign_up, 2: Log_in
   export default {
     name: 'App',
     components: {
-      Welcome
+      Welcome,
+      Sign_up
     },
     data() {
       return {

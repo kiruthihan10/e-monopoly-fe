@@ -1,18 +1,6 @@
 <template>
-    <div class="block">
-        <section class="hero is-dark">
-            <div class="hero-body">
-                <p class="title is-size-1">
-                    e-monopoly
-                </p>
-                <p class="subtitle is-size-3">
-                    The e-Transaction for monopoly
-                </p>
-            </div>
-        </section>
-    </div>
-    <div class="container">
-        
+    
+    <div class="container">       
         <div class="block">
             <div class="columns">
                 <div class="column">
@@ -38,12 +26,6 @@ import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
     name: 'Welcome',
-    data(){
-        return {
-            login_selected : false,
-            signup_selected : false
-        }
-    },
     emits: ['move_login', 'move_signup']
 })
 </script>
