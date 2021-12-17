@@ -1,6 +1,6 @@
 <template>
     
-    <div class="container">       
+    <div class="container">     
         <div class="block">
             <div class="columns">
                 <div class="column">

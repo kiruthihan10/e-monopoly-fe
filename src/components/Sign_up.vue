@@ -86,7 +86,7 @@
                         response = response.data
                         console.log(response)
                         if (response.user) {
-                            this.$emit('move_game_menu')
+                            this.$emit('move_game_menu',this.uname,this.pw)
                         }
                         else {
                             alert('Wrong User Name or Password')
