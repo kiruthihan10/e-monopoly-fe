@@ -1,14 +1,13 @@
 <template>
-    <div class="container">
         <div class="block">
             <div class="columns">
                 <div class="column">
                     <label for="UserName">User Name</label>
-                    <input type="text" class="input" placeholder="Enter Your User Name Here" v-model="uname" v-on:change="new_user" required>
+                    <input type="text" class="input" placeholder="Enter Your User Name Here" v-model="uname" v-on:change="new_user" required @keyup.enter="add_user">
                 </div>
                 <div class="column">
                     <label for="Password">Password</label>
-                    <input type="password" class="input" placeholder="Enter Your Password here" v-model="pw" required>
+                    <input type="password" class="input" placeholder="Enter Your Password here" v-model="pw" required @keyup.enter="add_user">
                 </div>
             </div>
         </div>
@@ -25,7 +24,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 <script>
     import backend from '../assets/js/backend.js'

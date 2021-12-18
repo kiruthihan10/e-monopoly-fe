@@ -31,7 +31,7 @@
                 <div class="navbar-end">
                     <div class="navbar-item" v-if='page_id == 0'>
                         <div class="buttons">
-                            <a class="button is-primary">
+                            <a class="button is-primary" @click="$emit('move_signup')">
                                 <strong>Sign up</strong>
                             </a>
                             <a class="button is-light" @click="$emit('move_login')">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="navbar-item" v-else-if='page_id !=1 & page_id != 2'>
-                        <a class="button is-danger" @click="$emit('move_signup')">
+                        <a class="button is-danger" @click="$emit('logout')">
                             <strong>Log-out</strong>
                         </a>
                     </div>
