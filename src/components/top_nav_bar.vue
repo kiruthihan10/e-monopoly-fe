@@ -8,7 +8,7 @@
             </div>
         </section>
     
-        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation" v-if="page_id != 0">
             <div class="navbar-brand">
                 <h1 class="is-size-3 has-text-black">
                     e-monopoly
