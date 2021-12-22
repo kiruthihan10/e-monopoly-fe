@@ -28,8 +28,15 @@ export default {
       async be_get_my_games(uid, pw) {
          return await this.axios.get(base_url+'/transactions/players/', create_auth(uid, pw))
       },
-      async be_is_game(uid, pw, game_id) {
+      async be_game_info(uid, pw, game_id) {
          return await this.axios.get(base_url+'/transactions/games/'+game_id+"/", create_auth(uid, pw))
-      }
+      },
+      async be_join_game(uid, pw, game_id) {
+         return await this.axios.post(
+            base_url+'/transactions/players/',
+            {
+               'Game': game_id,
+            },create_auth(uid, pw))
+      },
    }
 }

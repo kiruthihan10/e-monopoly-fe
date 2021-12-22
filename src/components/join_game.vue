@@ -50,7 +50,7 @@ export default {
             this.game_check()
         },
         async game_check() {
-            this.be_is_game(this.uname, this.pw, this.game_id).then((response) =>{
+            this.be_game_info(this.uname, this.pw, this.game_id).then((response) =>{
                 this.isdisabled = false
                 console.log(response)
             }).catch((error)=>{ 
@@ -61,8 +61,20 @@ export default {
             })
             return this.isdisabled
         },
-        join(){
-            this.$emit(this.game_id)
+        async join(){
+            this.be_join_game(this.uname, this.pw, this.game_id).then((response) => {
+                console.log(response)
+                this.$emit('join',this.game_id)
+            }).catch((error) => {
+                if (error.response.status == 400) {
+                    alert(error.response.data.error)
+                    this.$emit('join',this.game_id)
+                }
+                else if (error.response.status == 404){
+                    alert("Game not found")
+                }
+            })
+            
         }
     },
     data() {

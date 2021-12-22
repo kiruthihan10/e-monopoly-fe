@@ -1,6 +1,6 @@
 <template>
   <div class="block" name="Navbar">
-    <top_nav_bar :page_id='page_id' @move_create='page_id=4' @move_join='page_id=5' @move_login='page_id=2' @move_signup='page_id=1' @logout='logout' />
+    <top_nav_bar :page_id='page_id' @move_create='page_id=4' @move_join='page_id=4' @move_login='page_id=2' @move_signup='page_id=1' @logout='logout' />
   </div>
   <div class="container"> 
     <div class="block" name="Welcome Page">
@@ -10,7 +10,7 @@
       <Sign_up v-if="page_id == 1 | page_id == 2" :page_id="page_id" @move_menu='page_id=0' @move_game_menu='open_game_menu'></Sign_up>
     </div>
     <div class="block" name="Game Menu">
-      <game_menu v-if="page_id == 3" @move_create='page_id=4' @move_join='page_id=5' :uname="uname" :pw="pw" @game='game_info'/>
+      <game_menu v-if="page_id == 3" @move_create='page_id=4' @move_join='page_id=4' :uname="uname" :pw="pw" @game='game_info'/>
     </div>
     <div class="block" name="play_game">
       <play_game :game_id="game_id" :uname="uname" :pw="pw" v-if="page_id == 5"/>
@@ -42,10 +42,10 @@
     },
     data() {
       return {
-        page_id : 0,
-        uname : null,
-        pw : null,
-        game_id: null,
+        page_id : 5,
+        uname : 'Batman',
+        pw : 'Alfred',
+        game_id: 4,
       }
     },
     methods: {
