@@ -38,5 +38,16 @@ export default {
                'Game': game_id,
             },create_auth(uid, pw))
       },
+      async be_make_transaction(sender, sender_pw, receiver, amount, game_id) {
+         return await this.axios.post(
+            base_url+'/transactions/money/',
+            {
+               'sender': sender,
+               'receiver': receiver,
+               'Amount': amount,
+               'Game': game_id,
+            },create_auth(sender, sender_pw))
+      }
+
    }
 }
