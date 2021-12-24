@@ -1,8 +1,10 @@
 <template>
     <div class="block" name="Player Info" v-if="Banker != null">
         <div class="columns">
-            <div class="column">
-                Banker of the Game {{game_id}} is {{Banker}}
+            <div class="column" @click="open_wallet(Banker)">
+                <button class="button is-link">
+                    Banker of the Game {{game_id}} is {{Banker}}
+                </button>
             </div>
             <div class="column" >
                 {{uname}}
