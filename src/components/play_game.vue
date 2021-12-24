@@ -184,8 +184,10 @@
                         this.players[i].value = players[this.players[i].name]
                     }
                 }
-                this.connection.onclose = function() {
+
+                this.connection.onclose = () => {
                     console.log("Connection closed")
+                    this.connection = new WebSocket("wss://e-monopoly-pipeline.herokuapp.com/socket/"+this.game_id)
                 }
                 
             }
