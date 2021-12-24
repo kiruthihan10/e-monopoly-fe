@@ -179,8 +179,6 @@
 
                 this.connection.onmessage = (message) => {
                     var players = JSON.parse(message.data)
-                    console.log(players)
-                    console.log(this.players)
                     for (let i = 0 ;i < this.players.length; i++)
                     {
                         this.players[i].value = players[this.players[i].name]
