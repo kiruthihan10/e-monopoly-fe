@@ -169,7 +169,7 @@
             },
             socket_management () {
                 console.log("socket management initialized")
-                this.connection = new WebSocket("ws://localhost:9000/socket/"+this.game_id)
+                this.connection = new WebSocket("ws://e-monopoly-pipeline.herokuapp.com/socket/"+this.game_id)
 
                 this.connection.onopen = function() {
                     console.log("Connection established")
