@@ -1,4 +1,4 @@
-const base_url = 'https://e-monopoly-api.herokuapp.com/'
+const base_url = 'https://e-monopoly-api.herokuapp.com'
 const base_user_url = base_url + '/users/users/'
 
 function create_auth(uid, pw){
