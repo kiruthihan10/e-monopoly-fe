@@ -24,7 +24,7 @@
                     <a class="navbar-item" @click="$emit('move_create')" v-if='page_id != 0 & page_id != 1 & page_id != 2'>
                         Create
                     </a>
-                    <a class="navbar-item" @click="$emit('Move_Join')" v-if='page_id != 0 & page_id != 1 & page_id != 2'>
+                    <a class="navbar-item" @click="$emit('move_join')" v-if='page_id != 0 & page_id != 1 & page_id != 2'>
                         Join
                     </a>
                 </div>
