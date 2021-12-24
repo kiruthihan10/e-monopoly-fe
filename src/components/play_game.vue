@@ -15,21 +15,22 @@
             <progress class="progress" v-bind:value='player_value()' v-bind:max='total_money' :class="color_choice(player_value())"></progress>
         </div>
     </div>
-    
-    <div class="block" v-for="player in players_without_banker" :key="player.name" @click="open_wallet(player.name)">
-        <div class="columns is-mobile">
-            <div class="column is-one-fifth" >
-                <button class="button">
-                    {{player.name}}
-                </button>
-            </div>
-            <div class="column is-one-fifth">
-                {{player.value}}$
-            </div>
-            <div class="column">
-                <progress class="progress" v-bind:value='player.value' v-bind:max='total_money' :class="color_choice(player.value)"></progress>
-            </div>
-        </div> 
+    <div class="block" v-if="players != []" name="Players Info">
+        <div class="block" v-for="player in players_without_banker" :key="player.name" @click="open_wallet(player.name)">
+            <div class="columns is-mobile">
+                <div class="column is-one-fifth" >
+                    <button class="button">
+                        {{player.name}}
+                    </button>
+                </div>
+                <div class="column is-one-fifth">
+                    {{player.value}}$
+                </div>
+                <div class="column">
+                    <progress class="progress" v-bind:value='player.value' v-bind:max='total_money' :class="color_choice(player.value)"></progress>
+                </div>
+            </div> 
+        </div>
     </div>
     <div class="modal" :class="{'is-active': is_active}">
         <div class="modal-background">
