@@ -42,9 +42,9 @@
     },
     data() {
       return {
-        page_id : 5,
-        uname : 'Batman',
-        pw : 'Alfred',
+        page_id : 0,
+        uname : null,
+        pw : null,
         game_id: 4,
       }
     },

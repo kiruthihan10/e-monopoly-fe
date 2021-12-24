@@ -167,28 +167,21 @@
                     this.deactive()
                 })
             },
-            socket_management (players) {
+            socket_management () {
                 console.log("socket management initialized")
                 this.connection = new WebSocket("ws://localhost:9000/socket/"+this.game_id)
-                this.connection.players = players
 
                 this.connection.onopen = function() {
                     console.log("Connection established")
                 }
 
-                this.connection.onmessage = function(message) {
+                this.connection.onmessage = (message) => {
                     var players = JSON.parse(message.data)
                     console.log(players)
                     console.log(this.players)
                     for (let i = 0 ;i < this.players.length; i++)
                     {
-                        for (let j = 0 ;j < players.length; j++)
-                        {
-                            if (this.players[i].name == players[j].name)
-                            {
-                                this.players[i].value = players[j].value
-                            }
-                        }
+                        this.players[i].value = players[this.players[i].name]
                     }
                 }
                 this.connection.onclose = function() {
