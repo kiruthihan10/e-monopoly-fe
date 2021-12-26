@@ -173,7 +173,7 @@
                 console.log("socket management initialized")
                 this.connection = new WebSocket("wss://e-monopoly-pipeline.herokuapp.com/socket/"+this.game_id)
 
-                this.connection.onopen = function() {
+                this.connection.onopen = () => {
                     console.log("Connection established")
                 }
 
@@ -187,7 +187,7 @@
 
                 this.connection.onclose = () => {
                     console.log("Connection closed")
-                    this.connection = new WebSocket("wss://e-monopoly-pipeline.herokuapp.com/socket/"+this.game_id)
+                    this.socket_management()
                 }
                 
             }
