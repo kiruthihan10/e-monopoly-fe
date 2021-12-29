@@ -7,7 +7,7 @@
       <welcome v-if="page_id == 0" @move_login='page_id=2' @move_signup='page_id=1'></welcome>
     </div>
     <div class="block" name="Login And Signup Page">
-      <Sign_up v-if="page_id == 1 | page_id == 2" :page_id="page_id" @move_menu='page_id=0' @move_game_menu='open_game_menu'></Sign_up>
+      <Sign_up v-if="page_id == 1 | page_id == 2" :page_id="page_id" @move_menu='page_id=0' @move_game_menu='open_game_menu' @message_pass='add_message'></Sign_up>
     </div>
     <div class="block" name="Game Menu">
       <game_menu v-if="page_id == 3" @move_create='page_id=4' @move_join='page_id=4' :uname="uname" :pw="pw" @game='game_info'/>
@@ -16,7 +16,7 @@
       <play_game :game_id="game_id" :uname="uname" :pw="pw" v-if="page_id == 5"/>
     </div>
     <div class="block" name="join_game">
-      <join_game v-if="page_id == 4" :uname="uname" :pw="pw" @join='game_info'/>
+      <join_game v-if="page_id == 4" :uname="uname" :pw="pw" @join='game_info' @game='game_info'/>
     </div>
   </div>
 </template>
@@ -42,7 +42,7 @@
     },
     data() {
       return {
-        page_id : 0,
+        page_id : 2,
         uname : null,
         pw : null,
         game_id: 4,
@@ -50,7 +50,7 @@
     },
     methods: {
       open_game_menu(uname, pw) {
-        this.page_id = 3
+        this.page_id = 4
         this.uname = uname
         this.pw = pw
       },
@@ -63,6 +63,7 @@
         this.game_id = game_id
         this.page_id = 5
       },
+      
     }
   }
 </script>

@@ -24,6 +24,10 @@
                     <label for="Password">Password</label>
                     <input type="password" class="input" placeholder="Enter Your Password here" v-model="pw" required @keyup.enter="add_user">
                 </div>
+                <div class="notification" v-for="message in messages" :key="message.time" @click="remove_message(message.time)">
+                    <button class="delete" @click='remove_message'></button>
+                    {{message.message}}
+                </div>
             <!-- Content ... -->
             </section>
             <footer class="modal-card-foot">
@@ -44,10 +48,14 @@
 </template>
 <script>
     import backend from '../assets/js/backend.js'
+    import messages from '../assets/js/messages.js'
     export default {
         name: 'Sign_up',
-        mixins:[backend],
-        emits: ['move_menu'],
+        mixins:[
+            backend,
+            messages
+        ],
+        emits: ['move_menu','move_game_menu'],
         data() {
             return {
                 uname: '',
@@ -106,7 +114,8 @@
                             this.$emit('move_game_menu',this.uname,this.pw)
                         }
                         else {
-                            alert('Wrong User Name or Password')
+                            this.add_message('Wrong User Name or Password', false)
+                            // alert('Wrong User Name or Password')
                         }
                     }).catch((error) => {
                         console.log(error)

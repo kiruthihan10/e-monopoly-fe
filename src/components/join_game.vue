@@ -1,37 +1,46 @@
 <template>
-<div class="block">
-    <label>Enter Game ID to Join</label>
-</div>
-<div class="block">
-    <input type="number" class="input is-rounded" placeholder="Enter Game ID here or select from below" v-model='game_id' v-on:change='game_check'>
-</div>
-<div class="block">
-    <strong>Wanna Continue your Old Game</strong>
-</div>
-<div class="block">
-    <div class="select is-multiple">
-        <!-- <select multiple>
-            <option>Apple</option>
-            <option>Orange</option>
-            <option>Peach</option>
-        </select> -->
-        <select multiple v-model="selected_game_id" @change='change_game_id'>
-            <option v-for="game in games" :key="game.GameID" v-bind:value="game.GameID">  
-                <div v-if="game.last_player != null">
-                    {{game.last_player.slice(8,10)}}
-                    {{game.last_player.slice(5,7)}}
-                    {{game.last_player.slice(0,4)}}
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <div class="block">
+                    <label>Enter Game ID to Join</label>
                 </div>
-                {{game.Title}}
-            </option>
-        </select>
+            </header>
+            <section class="modal-card-body">
+                <div class="block">
+                    <input type="number" class="input is-rounded" placeholder="Enter Game ID here or select from below" v-model='game_id' v-on:change='game_check'>
+                </div>
+                <div class="block">
+                    <strong>Wanna Continue your Old Game</strong>
+                </div>
+                <div class="block">
+                    <div class="select is-multiple">
+                        <select multiple v-model="selected_game_id" @change='change_game_id'>
+                            <option v-for="game in games" :key="game.GameID" v-bind:value="game.GameID">  
+                                <div v-if="game.last_player != null">
+                                    {{game.last_player.slice(8,10)}}
+                                    {{game.last_player.slice(5,7)}}
+                                    {{game.last_player.slice(0,4)}}
+                                </div>
+                                {{game.Title}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="block">
+                    <button class="button is-success" :disabled='isdisabled' @click='join'>
+                        Join!!!
+                    </button>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-info" @click="new_game">
+                    <strong>Create New Game</strong>
+                </button>
+            </footer>
+        </div>
     </div>
-</div>
-<div class="block">
-    <button class="button" :disabled='isdisabled' @click='join'>
-        Join!!!
-    </button>
-</div>
 </template>
 
 <script>
@@ -75,6 +84,13 @@ export default {
                 }
             })
             
+        },
+        async new_game() {
+            this.be_create_game(this.uname, this.pw).then((response) =>
+            {
+                response = response.data
+                this.$emit('game',response.GameID)
+            })
         }
     },
     data() {

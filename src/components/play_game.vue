@@ -71,7 +71,8 @@
                 reciever : null,
                 is_active : false,
                 payment_value : null,
-                connection : null
+                connection : null,
+                tweened_number : 0
             }
         },
         methods : {
@@ -182,6 +183,19 @@
                     for (let i = 0 ;i < this.players.length; i++)
                     {
                         this.players[i].value = players[this.players[i].name]
+                        delete players[this.players[i].name]
+                    }
+                    if (players.length > 0)
+                    {
+                        for (const player in players) {
+                            this.players.push(
+                                {
+                                    name:player,
+                                    value:players[player]
+                                }
+                            )
+                        }
+                       
                     }
                 }
 
@@ -219,6 +233,19 @@
                 }
                 else {return this.players}
             },
+            animatedNumber(){
+                return this.tweened_number.toFixed(0)
+            }
+        },
+        watch: {
+            players(newValue) {
+                for (let i=0; i< newValue.length; i++)
+                {
+                    var player = newValue[i]
+                    gsap.to(this.$data.players[i], { duration : 0.5, value: player.value})
+                }
+                
+            }
         }
     }
 </script>
