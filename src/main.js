@@ -3,6 +3,7 @@ import App from './App.vue'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import './registerServiceWorker'
 
 const app = createApp(App)
 
