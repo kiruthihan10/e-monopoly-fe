@@ -238,14 +238,7 @@
             }
         },
         watch: {
-            players(newValue) {
-                for (let i=0; i< newValue.length; i++)
-                {
-                    var player = newValue[i]
-                    gsap.to(this.$data.players[i], { duration : 0.5, value: player.value})
-                }
-                
-            }
+            
         }
     }
 </script>
