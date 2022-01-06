@@ -212,7 +212,7 @@
         },
         computed: {
             total_money() {
-                if (Banker != uname)
+                if (this.Banker != this.uname)
                 {
                     return this.calc_total_money()
                 }
