@@ -212,7 +212,13 @@
         },
         computed: {
             total_money() {
-                return this.calc_total_money()
+                if (Banker != uname)
+                {
+                    return this.calc_total_money()
+                }
+                else {
+                    return 20,580
+                }
             },
             players_without_banker(){
                 if (this.players.length > 0)
