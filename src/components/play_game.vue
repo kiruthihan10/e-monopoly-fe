@@ -21,7 +21,7 @@
         <div class="block" v-for="player in players_without_banker" :key="player.name" @click="open_wallet(player.name)">
             <div class="columns is-mobile">
                 <div class="column is-one-fifth" >
-                    <button class="button">
+                    <button class="button is-size-7-mobile">
                         {{player.name}}
                     </button>
                 </div>
