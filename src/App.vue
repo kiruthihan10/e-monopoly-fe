@@ -16,7 +16,7 @@
       <play_game :game_id="game_id" :uname="uname" :pw="pw" v-if="page_id == 5"/>
     </div>
     <div class="block" name="join_game">
-      <join_game v-if="page_id == 4" :uname="uname" :pw="pw" @join='game_info' @game='game_info'/>
+      <join_game v-if="page_id == 4" :uname="uname" :pw="pw" @join='game_info' @game='game_info' @delete_game='deleteGame'/>
     </div>
   </div>
 </template>
@@ -49,6 +49,9 @@
       }
     },
     methods: {
+      delete_game(){
+        this.page_id = 3
+      },
       open_game_menu(uname, pw) {
         this.page_id = 4
         this.uname = uname

@@ -1,4 +1,5 @@
 const base_url = 'https://e-monopoly-api.herokuapp.com'
+// const base_url = 'http://127.0.0.1:8000'
 const base_user_url = base_url + '/users/users/'
 
 function create_auth(uid, pw){
@@ -47,6 +48,11 @@ export default {
                'Amount': amount,
                'Game': game_id,
             },create_auth(sender, sender_pw))
+      },
+      async be_delete_game(sender, sender_pw, game_id) {
+         return await this.axios.delete(
+            base_url+'/transactions/games/'+game_id+"/",
+            create_auth(sender, sender_pw))
       }
 
    }

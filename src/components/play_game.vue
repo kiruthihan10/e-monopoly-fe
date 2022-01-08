@@ -34,6 +34,11 @@
             </div> 
         </div>
     </div>
+    <div class="block">
+        <button class="button" @click="delete_game">
+            Delete Game
+        </button>
+    </div>
     <div class="modal" :class="{'is-active': is_active}">
         <div class="modal-background">
         </div>
@@ -76,6 +81,13 @@
             }
         },
         methods : {
+            async delete_game() {
+                let response = await this.be_delete_game(this.uname,this.pw,this.game_id)
+                if(response.status == 204){
+                    this.$emit('delete_game')
+                }
+            },
+            
             async load_info() {
                 this.be_game_info(this.uname, this.pw, this.game_id).then((response) => {
                     response = response.data
